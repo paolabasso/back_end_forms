@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const dadosdb = process.env.DB;
 
 const connectionDB = () => {
 
-const nomeDB = "NotasAlunos"
-const db = mongoose.connect(`mongodb+srv://rest-api-user:h4xPbu5iTFray7dR@cluster0.tujck.mongodb.net/${nomeDB}?retryWrites=true&w=majority`)
+
+const db = mongoose.connect(dadosdb)
 
 db.catch((error) => {
     console.log(error)
