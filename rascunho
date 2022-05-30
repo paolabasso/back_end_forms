@@ -1,0 +1,14 @@
+router.post('/edit', function(req, res, next) {  
+ var id = req.body.id;  
+  
+ Contatos.findById(id, function(err, doc) {  
+   if (err) {  
+     console.error('error, no entry found');  
+   }  
+   doc.nome = req.body.nome;  
+   doc.email = req.body.email;  
+   doc.telefone = req.body.telefone;  
+   doc.save();  
+ })  
+ res.redirect('/');  
+});  

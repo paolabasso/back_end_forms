@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-//Validações
-const notas = new Schema ({
+const updateNotas = new Schema ({
     professor: String,
     disciplina: String,
     turma: String,
@@ -13,7 +12,7 @@ const notas = new Schema ({
     resultado: String
 });
 
-export default mongoose.model("RegisterNotas", notas);
+export default mongoose.model("UpdateRegisterNotas", updateNotas);
 
 
 
