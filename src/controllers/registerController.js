@@ -6,6 +6,11 @@ import registerNotas from "../models/registerModel.js";
 const createRegister = (req, res) => {
     // let register = req.body;
     let testeDB = new registerNotas(req.body);
+    let err = testeDB.validateSync();
+    if(err){
+        return res.status(400).send(err);
+    }
+    
     testeDB.save();
     //passe por validações
     
@@ -51,8 +56,9 @@ const updateRegister = async (req, res) => {
         //new for true - ele retorna o objeto atualizado
         //new for false - ele retorna o objeto anterior
         //upser - se o objeto passado, não existir: true - cria o objeto; false - não cria;
+        //runValidators: sincroniza com os validators do schema
         
-        { new: true, upsert: true }
+        { new: true, upsert: true, runValidators: true }
     );
     res.json(register)
     } catch(err) {
