@@ -4,15 +4,18 @@
 import registerNotas from '../models/registerModel.js';
 
 const createRegister = (req, res) => {
-  console.log('cheguei');
-  // let register = req.body;
-  let testeDB = new registerNotas(req.body);
-  let err = testeDB.validateSync();
-  if (err) {
-    return res.status(400).send(err);
+  try {
+    // let register = req.body;
+    let testeDB = new registerNotas(req.body);
+    if (testeDB.validateSync()) {
+      return res.status(400).send(err);
+    }
+    testeDB.save();
+    return res.status(201).json(testeDB);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
   }
-  testeDB.save();
-  return res.status(201).json(testeDB);
 
   //o que queremos quando chega a request
   //o que queremos responder ao cliente
@@ -33,6 +36,7 @@ const createRegister = (req, res) => {
 //Sem Callback, e com async
 const getAllRegisters = async (req, res) => {
   try {
+    console.log('cheguei');
     const listaDeRegistros = await registerNotas.find();
     res.json(listaDeRegistros);
   } catch (err) {

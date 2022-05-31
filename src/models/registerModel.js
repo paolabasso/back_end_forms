@@ -9,7 +9,7 @@ const notas = new Schema({
   aluno: { type: String, required: true },
   notas: [{ type: Number, min: 0, max: 10 }],
   media: { type: Number, min: 0, max: 10 },
-  resultado: { type: String, enum: ['Aprovado', 'Reprovado'], required: true }
+  resultado: { type: String, enum: ['aprovado', 'reprovado'], required: true }
 });
 
 export default mongoose.model('RegisterNotas', notas);

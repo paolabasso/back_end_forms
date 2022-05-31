@@ -10,7 +10,7 @@ connectionDB();
 
 const port = process.env.PORT || 3000;
 
-app.use(cors);
+app.use(cors());
 //essa função transformará o que vem do cliente em JSON
 app.use(express.json());
 
