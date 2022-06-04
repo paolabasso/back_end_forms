@@ -60,7 +60,7 @@ const updateRegister = async (req, res) => {
         
         { new: true, upsert: true, runValidators: true }
     );
-    res.json(register)
+    res.status(200).json(register);
     } catch(err) {
         console.log(err);
         res.status(400).json(err);
