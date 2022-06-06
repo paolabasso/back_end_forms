@@ -79,4 +79,17 @@ const deleteRegister = async (req, res) => {
     }
 }
 
-export { createRegister, getAllRegisters, updateRegister, deleteRegister };
+const getRegisterById = async (req, res) => {
+    try{
+        const register = await registerNotas.findById(req.params.id);
+        res.status(200).json(register);
+        //pegar o registro pela ID.
+        //responder ele como json para o front-end
+    }catch(err) {
+        console.log(err);
+        res.status(400).json(err)
+    }
+}
+
+
+export { createRegister, getAllRegisters, updateRegister, deleteRegister, getRegisterById };

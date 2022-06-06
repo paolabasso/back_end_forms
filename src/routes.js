@@ -1,6 +1,6 @@
 //onde defineremos as rotas dos métodos
 import { Router } from "express";
-import { createRegister, getAllRegisters, deleteRegister, updateRegister } from "./controllers/registerController.js";
+import { createRegister, getAllRegisters, deleteRegister, updateRegister, getRegisterById } from "./controllers/registerController.js";
 
 const router = Router();
 
@@ -14,6 +14,8 @@ router.get("/", (req, res) => {
 router.post("/registers", createRegister);
 
 router.get("/registers", getAllRegisters);
+
+router.get("/registers/:id", getRegisterById);
 
 router.put("/registers/:id", updateRegister);
 
