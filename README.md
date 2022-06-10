@@ -8,5 +8,4 @@ Express
 Mongoose (schema, validators)
 MongoDB
 
-A conexão com o front-end está em andamento.
-POST já implementado
+
